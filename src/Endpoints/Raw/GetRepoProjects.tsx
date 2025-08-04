@@ -3,7 +3,7 @@ export interface ProjectRepoRequest {
   }
 
   
-interface ProjectRepoResponse {
+export interface ProjectRepoResponse {
   UserName: string;
   GitHubRepo: {
     id: number;

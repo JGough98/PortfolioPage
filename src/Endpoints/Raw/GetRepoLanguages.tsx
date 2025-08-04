@@ -25,3 +25,5 @@ async function getRepoLanguages(repoLanguagesRequest : GitHubRepoLanguagesReques
   const data: LanguageResponse = await response.json();
   return Object.entries(data).map((x) => ({ name: x[0], byteCode: x[1] }));
 }
+
+export default getRepoLanguages; 
