@@ -2,6 +2,7 @@ export interface ProjectRepoRequest {
     pantryId : string;
   }
 
+  
 interface ProjectRepoResponse {
   UserName: string;
   GitHubRepo: {
@@ -16,7 +17,7 @@ interface ProjectRepoResponse {
 }
 
 
-export const GetRepoProjects = async (repoRequest: ProjectRepoRequest): Promise<ProjectRepoResponse> => {
+export const getRepoProjects = async (repoRequest: ProjectRepoRequest): Promise<ProjectRepoResponse> => {
   try {
     const response = await fetch(`https://getpantry.cloud/apiv1/pantry/${repoRequest.pantryId}/basket/GitHubRepo`);
     
@@ -33,4 +34,4 @@ export const GetRepoProjects = async (repoRequest: ProjectRepoRequest): Promise<
   }
 };
 
-export default GetRepoProjects;
+export default getRepoProjects;

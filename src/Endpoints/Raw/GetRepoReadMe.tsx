@@ -1,3 +1,14 @@
+export interface GitHubReadMeRequest
+{
+    username: string,
+    repoName: string
+}
+
+export interface GitHubReadMeDTO
+{
+    description : string;
+}
+
 interface GitHubReadMeResponse
 {
   name: string;
@@ -16,17 +27,6 @@ interface GitHubReadMeResponse
     git: string;
     html: string;
   };
-}
-
-export interface GitHubReadMeRequest
-{
-    username: string,
-    repoName: string
-}
-
-export interface GitHubReadMeDTO
-{
-    description : string;
 }
 
 
