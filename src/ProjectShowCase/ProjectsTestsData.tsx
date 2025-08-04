@@ -1,7 +1,7 @@
 import { ProjectsProps } from './Projects';
 
 
-export const ProjectFetcher = (): ProjectsProps => {
+export const ProjectsTestsData = (): ProjectsProps => {
     return {
       projects: [
         {
@@ -29,4 +29,4 @@ export const ProjectFetcher = (): ProjectsProps => {
     };
   };
   
-  export default ProjectFetcher;
+  export default ProjectsTestsData;
