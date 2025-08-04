@@ -4,16 +4,45 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Projects from './ProjectShowCase/Projects';
-import ProjectFetcher from './ProjectShowCase/ProjectFetcher';
+import getPortfolioRepos from './Endpoints/Complex/GetPortfolioRepos';
+import { ProjectRepoRequest } from './Endpoints/Raw/GetRepoProjects';
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+// Initialize with empty array, will be populated when data loads
+let projectsData: any[] = [];
+const pantryId: ProjectRepoRequest = { pantryId: "00000000-0000-0000-0000-000000000000" };
+
+// Fetch the portfolio repos
+getPortfolioRepos(pantryId)
+  .then(repos => {
+    projectsData = repos;
+    // Re-render with the fetched data
+    root.render(
+      <React.StrictMode>
+        <Projects projects={projectsData}/>
+        <App />
+      </React.StrictMode>
+    );
+  })
+  .catch(error => {
+    console.error('Failed to fetch projects:', error);
+    // Render with empty projects on error
+    root.render(
+      <React.StrictMode>
+        <Projects projects={[]}/>
+        <App />
+      </React.StrictMode>
+    );
+  });
+
+// Initial render with empty projects
 root.render(
   <React.StrictMode>
-    <Projects projects={ProjectFetcher().projects}/>
+    <Projects projects={projectsData}/>
     <App />
   </React.StrictMode>
 );
