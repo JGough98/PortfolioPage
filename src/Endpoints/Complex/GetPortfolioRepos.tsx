@@ -55,14 +55,17 @@ export const getPortfolioRepos = async (repoRequest: ProjectRepoRequest): Promis
             const githubLanguages = await getRepoLanguages(nextRequest);
             
             const foundLanguages = githubLanguages.filter(lang => 
-                Object.keys(GITHUB_TO_DEVICON).includes(lang.name)
-            );
+                    Object.keys(GITHUB_TO_DEVICON).includes(lang.name))
+                .map((x) => ({
+                    name : GITHUB_TO_DEVICON[x.name as keyof typeof GITHUB_TO_DEVICON],
+                    byteCode : x.byteCode}));
+
             const notFoundLanguages = githubLanguages.filter(lang => 
                 !Object.keys(GITHUB_TO_DEVICON).includes(lang.name)
             );
 
             if(notFoundLanguages.length > 0)
-                console.warn(`Missing Devicon languages: ${notFoundLanguages.map(lang => lang.name).join(', ')}`);
+                console.warn(`Missing GitHub to Devicon languages: ${notFoundLanguages.map(lang => lang.name).join(', ')}`);
             
             // Use only the found languages for now
             languages = foundLanguages;
