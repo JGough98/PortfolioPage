@@ -1,6 +1,7 @@
 import getRepoLanguages, { LanguageDTO } from "../Raw/GetRepoLanguages";
 import getRepoProjects, { ProjectRepoRequest, ProjectRepoResponse } from "../Raw/GetRepoProjects";
 import getRepoReadMe from "../Raw/GetRepoReadMe";
+import { GITHUB_TO_DEVICON } from "../../Devicon/GithubToDeviconConstants";
 
 
 export interface ProjectRepoDTO {
@@ -28,6 +29,7 @@ export const getPortfolioRepos = async (repoRequest: ProjectRepoRequest): Promis
     }
 
     const repos: ProjectRepoDTO[] = new Array(repoProjects.GitHubRepo.length);
+
     for (var i = 0; i < repoProjects.GitHubRepo.length; i++)
     {
         const nextRequest = {username: repoProjects.UserName, repoName: repoProjects.GitHubRepo[i].name};
@@ -50,7 +52,20 @@ export const getPortfolioRepos = async (repoRequest: ProjectRepoRequest): Promis
         try
         {
             // Add the languages used in the project.
-            languages = await getRepoLanguages(nextRequest);
+            const githubLanguages = await getRepoLanguages(nextRequest);
+            
+            const foundLanguages = githubLanguages.filter(lang => 
+                Object.keys(GITHUB_TO_DEVICON).includes(lang.name)
+            );
+            const notFoundLanguages = githubLanguages.filter(lang => 
+                !Object.keys(GITHUB_TO_DEVICON).includes(lang.name)
+            );
+
+            if(notFoundLanguages.length > 0)
+                console.warn(`Missing Devicon languages: ${notFoundLanguages.map(lang => lang.name).join(', ')}`);
+            
+            // Use only the found languages for now
+            languages = foundLanguages;
         }
         catch (error)
         {
