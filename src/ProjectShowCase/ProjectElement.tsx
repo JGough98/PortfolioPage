@@ -1,23 +1,26 @@
 import React from 'react';
+import { ProjectRepoDTO } from '../Endpoints/Complex/GetPortfolioRepos';
+import DeviconImg from '../Devicon/DeviconImg';
 
+export interface ProjectElementProps {
+  project: ProjectRepoDTO;
+}
 
-  export interface ProjectElementProps {
-    title: string;
-    description: string;
-    image?: string;
-    repoLink: string;
-    docLink?: string;
-  }
+export const ProjectElement: React.FC<ProjectElementProps> = ({ project }) => (
+  <div className={`ProjectElement-${project.name}`}>
+    {
+      project.languages.map((language, index) => (
+        <DeviconImg key={index} languageName={language.name} />
+      ))
+    }
+    <h2>{project.name}</h2>
+    <p>{project.description}</p>
+    {project.images && project.images.length > 0 && (
+      <img src={project.images[0]} alt={project.name} />
+    )}
+    <a href={project.url}>Learn more</a>
+    {project.docURL && <a href={project.docURL}>Documentation</a>}
+  </div>
+);
 
-  export const ProjectElement: React.FC<ProjectElementProps> = ({ title, description, image, repoLink, docLink }) => (
-    <div className={`ProjectElement-${title}`}>
-      <h2>{title}</h2>
-      <p>{description}</p>
-      {image && <img src={image} alt={title} />}
-      <a href={repoLink}>Learn more</a>
-      {docLink && <a href={docLink}>Documentation</a>}
-    </div>
-  );
-
-  
 export default ProjectElement;
