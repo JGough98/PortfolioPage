@@ -29,16 +29,7 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
         justifyContent: 'space-between',
         cursor: 'pointer'
       }}>
-        <h3 style={{ margin: 0 }}>F</h3>
-        <div style={{ display: 'flex', gap: '4px' }}>
-          {languages.slice(0, 4).map((language, index) => (
-            <DeviconImg 
-              key={index} 
-              languageName={language} 
-              size="small"
-            />
-          ))}
-        </div>
+        <h3 style={{ margin: 0 }}>Languages</h3>
       </div>
 
       {/* Expanded Language Options */}
