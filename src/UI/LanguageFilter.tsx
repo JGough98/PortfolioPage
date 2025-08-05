@@ -13,7 +13,6 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
   return (
     <div 
       style={{ 
-        border: '1px solid black', 
         margin: '8px', 
         padding: '8px', 
         borderRadius: '4px',
@@ -31,7 +30,7 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
         cursor: 'pointer',
         whiteSpace: 'nowrap'
       }}>
-        <h3 style={{ margin: 0 }}>Languages</h3>
+        <h3 style={{ margin: 0 }}>All Languages</h3>
       </div>
 
       {/* Expanded Language Options - Positioned to the right */}
@@ -48,8 +47,6 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
             ? 'max-width 0.3s ease-in-out, opacity 0.3s ease-in-out' 
             : 'max-width 0.2s ease-in-out, opacity 0.2s ease-in-out',
           backgroundColor: 'white',
-          border: '1px solid black',
-          borderRadius: '4px',
           padding: '8px',
           zIndex: 1000
         }}
