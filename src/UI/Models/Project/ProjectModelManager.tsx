@@ -7,10 +7,15 @@ export interface ProjectsProps {
 }
 
 const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  // Track expanded state for each project
+  const [expanded, setExpanded] = useState<boolean[]>(() => projects.map(() => false));
 
   const handleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
+    setExpanded(prev => {
+      const updated = [...prev];
+      updated[index] = !updated[index];
+      return updated;
+    });
   };
 
   return (
@@ -19,7 +24,7 @@ const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
         <ProjectModel
           key={i}
           project={project}
-          isExpanded={expandedIndex === i}
+          isExpanded={expanded[i]}
           onExpand={() => handleExpand(i)}
         />
       ))}

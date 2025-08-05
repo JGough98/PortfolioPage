@@ -24,28 +24,29 @@ export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpande
       
       {/* Collapsed State - Always Visible */}
       <div 
-        onClick={onExpand} 
-        onMouseEnter={() => !isExpanded && setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         style={{ 
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'space-between', 
-          cursor: 'pointer',
           transition: 'transform 0.2s ease-in-out'
         }} 
       >
-        <h2 style={{ 
+        <h2 
+        onClick={onExpand} 
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{ 
           margin: 0,
-          transform: isHovered && !isExpanded ? 'scale(1.05)' : 'scale(1)',
-          transition: 'transform 0.2s ease-in-out'
+          transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+          transition: 'transform 0.2s ease-in-out',
+          cursor: 'pointer',
         }}>
           {project.name}
         </h2>
         <div style={{ 
           display: 'flex', 
           gap: '4px',
-          transform: isHovered && !isExpanded ? 'scale(1.05)' : 'scale(1)',
+          transform: isHovered ? 'scale(1.05)' : 'scale(1)',
           transition: 'transform 0.2s ease-in-out'
         }}>
           {project.languages && project.languages.map((language, index) => (
