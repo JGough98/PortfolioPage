@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProjectModel from './ProjectModel';
-import { ProjectRepoDTO } from '../../Endpoints/Complex/GetPortfolioRepos';
+import { ProjectRepoDTO } from '../../../Endpoints/Complex/GetPortfolioRepos';
 
 export interface ProjectsProps {
   projects: ProjectRepoDTO[];
