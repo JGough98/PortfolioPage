@@ -55,23 +55,31 @@ export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpande
       </div>
 
       {/* Expanded State - Only Visible When Expanded */}
-      {isExpanded && (
-        <div style={{ marginTop: '12px' }}>
-          <p>{project.description}</p>
-          {project.images && project.images.length > 0 && (
-            <img src={project.images[0]} alt={project.name} style={{ maxWidth: '100%', height: 'auto' }} />
+      <div 
+        style={{ 
+          marginTop: '12px',
+          maxHeight: isExpanded ? '1000px' : '0px',
+          overflow: 'hidden',
+          opacity: isExpanded ? 1 : 0,
+          transition: isExpanded 
+            ? 'max-height 0.6s ease-in-out, opacity 0.6s ease-in-out' 
+            : 'max-height 0.2s ease-in-out, opacity 0.2s ease-in-out'
+        }}
+      >
+        <p>{project.description}</p>
+        {project.images && project.images.length > 0 && (
+          <img src={project.images[0]} alt={project.name} style={{ maxWidth: '100%', height: 'auto' }} />
+        )}
+        <div style={{ marginTop: '8px' }}>
+          <a href={project.url} target="_blank" rel="noopener noreferrer">Learn more</a>
+          {project.docURL && (
+            <>
+              {' | '}
+              <a href={project.docURL} target="_blank" rel="noopener noreferrer">Documentation</a>
+            </>
           )}
-          <div style={{ marginTop: '8px' }}>
-            <a href={project.url} target="_blank" rel="noopener noreferrer">Learn more</a>
-            {project.docURL && (
-              <>
-                {' | '}
-                <a href={project.docURL} target="_blank" rel="noopener noreferrer">Documentation</a>
-              </>
-            )}
-          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
