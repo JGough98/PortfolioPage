@@ -11,17 +11,16 @@ export interface ProjectElementProps {
 export const ProjectElement: React.FC<ProjectElementProps> = ({ project, isExpanded, onExpand }) => (
   <div 
     className={`ProjectElement-${project.name}`}
-    onClick={onExpand}
     style={{ 
       border: '1px solid black', 
       margin: '8px', 
       padding: '8px', 
-      cursor: 'pointer',
       borderRadius: '4px'
     }}
   >
+    
     {/* Collapsed State - Always Visible */}
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <div onClick={onExpand} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer'} }>
       <h2 style={{ margin: 0 }}>{project.name}</h2>
       <div style={{ display: 'flex', gap: '4px' }}>
         {project.languages && project.languages.map((language, index) => (
