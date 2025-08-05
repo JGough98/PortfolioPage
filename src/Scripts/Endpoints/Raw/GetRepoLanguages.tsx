@@ -1,14 +1,11 @@
-export interface GitHubRepoLanguagesRequest
-{
-    username: string,
-    repoName: string
-}
+import GitHubRepoRequest from "../../../Data/Requests/GitHubRepoRequest";
+
 
 export type LanguageResponse = {
   [language: string]: number;
 };
 
-async function getRepoLanguages(repoLanguagesRequest : GitHubRepoLanguagesRequest): Promise<LanguageResponse> {
+async function getRepoLanguages(repoLanguagesRequest : GitHubRepoRequest): Promise<LanguageResponse> {
   const url = `https://api.github.com/repos/${repoLanguagesRequest.username}/${repoLanguagesRequest.repoName}/languages`;
 
   const response = await fetch(url);

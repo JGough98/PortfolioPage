@@ -1,5 +1,6 @@
-import { GitHubToDevicon, NO_GITHUB_MAPPING_FOUND } from "../../UI/Devicon/GithubToDeviconConstants";
-import getRepoLanguages, { GitHubRepoLanguagesRequest } from "../Raw/GetRepoLanguages";
+import { GitHubToDevicon, NO_GITHUB_MAPPING_FOUND } from "../../../Data/GithubToDevicon";
+import GitHubRepoRequest from "../../../Data/Requests/GitHubRepoRequest";
+import getRepoLanguages from "../Raw/GetRepoLanguages";
 
 
 export interface LanguageDTO
@@ -9,7 +10,7 @@ export interface LanguageDTO
 }
 
 async function getRepoDeviconLanguages(
-    repoLanguagesRequest : GitHubRepoLanguagesRequest,
+    repoLanguagesRequest : GitHubRepoRequest,
     githubToDevicon : GitHubToDevicon) : Promise<LanguageDTO[]> {
     const langauges = await getRepoLanguages(repoLanguagesRequest);
 

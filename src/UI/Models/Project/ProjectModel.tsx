@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProjectRepoDTO } from '../../../Endpoints/Complex/GetPortfolioRepos';
+import { ProjectRepoDTO } from '../../../Scripts/Endpoints/Interpreted/GetPortfolioRepos';
 import DeviconImg from '../../Devicon/DeviconImg';
 
 export interface ProjectElementProps {

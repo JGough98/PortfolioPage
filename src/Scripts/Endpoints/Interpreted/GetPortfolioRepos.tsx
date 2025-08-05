@@ -1,6 +1,6 @@
 import getRepoProjects, { ProjectRepoRequest, ProjectRepoResponse } from "../Raw/GetRepoProjects";
 import getRepoReadMe from "../Raw/GetRepoReadMe";
-import {GITHUB_TO_DEVICON, GitHubToDevicon, NO_GITHUB_MAPPING_FOUND } from "../../UI/Devicon/GithubToDeviconConstants";
+import {GITHUB_TO_DEVICON, GitHubToDevicon, NO_GITHUB_MAPPING_FOUND } from "../../../Data/GithubToDevicon";
 import getRepoDeviconLanguages, { LanguageDTO } from "./GetRepoDeviconLanguages";
 
 
