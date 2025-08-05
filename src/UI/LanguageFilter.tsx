@@ -17,7 +17,8 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
         margin: '8px', 
         padding: '8px', 
         borderRadius: '4px',
-        position: 'relative'
+        position: 'relative',
+        display: 'inline-block'
       }}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
@@ -27,24 +28,33 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'space-between',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        whiteSpace: 'nowrap'
       }}>
         <h3 style={{ margin: 0 }}>Languages</h3>
       </div>
 
-      {/* Expanded Language Options */}
+      {/* Expanded Language Options - Positioned to the right */}
       <div 
         style={{ 
-          marginTop: '8px',
-          maxHeight: isExpanded ? '200px' : '0px',
+          position: 'absolute',
+          left: '100%',
+          top: '0',
+          marginLeft: '8px',
+          maxWidth: isExpanded ? '300px' : '0px',
           overflow: 'hidden',
           opacity: isExpanded ? 1 : 0,
           transition: isExpanded 
-            ? 'max-height 0.3s ease-in-out, opacity 0.3s ease-in-out' 
-            : 'max-height 0.2s ease-in-out, opacity 0.2s ease-in-out'
+            ? 'max-width 0.3s ease-in-out, opacity 0.3s ease-in-out' 
+            : 'max-width 0.2s ease-in-out, opacity 0.2s ease-in-out',
+          backgroundColor: 'white',
+          border: '1px solid black',
+          borderRadius: '4px',
+          padding: '8px',
+          zIndex: 1000
         }}
       >
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', minWidth: '200px' }}>
           {languages.map((language, index) => (
             <div
               key={index}
