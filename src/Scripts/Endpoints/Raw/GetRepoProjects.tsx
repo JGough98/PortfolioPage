@@ -1,8 +1,3 @@
-export interface ProjectRepoRequest {
-    pantryId : string;
-  }
-
-  
 export interface ProjectRepoResponse {
   UserName: string;
   GitHubRepo: {
@@ -17,9 +12,15 @@ export interface ProjectRepoResponse {
 }
 
 
-export const getRepoProjects = async (repoRequest: ProjectRepoRequest): Promise<ProjectRepoResponse> => {
+export const getRepoProjects = async (): Promise<ProjectRepoResponse> => {
+  const token = process.env.REACT_APP_PANTRY_TOKEN;
+  
+  if (!token) {
+    throw new Error('Pantry token not found. Please set REACT_APP_PANTRY_TOKEN in your .env file');
+  }
+
   try {
-    const response = await fetch(`https://getpantry.cloud/apiv1/pantry/${repoRequest.pantryId}/basket/GitHubRepo`);
+    const response = await fetch(`https://getpantry.cloud/apiv1/pantry/${token}/basket/GitHubRepo`);
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

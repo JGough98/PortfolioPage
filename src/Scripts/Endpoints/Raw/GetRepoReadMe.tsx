@@ -31,8 +31,20 @@ interface GitHubReadMeResponse
 
 
 const fetchRepoReadMe = async (gitHubRepoReadMeRequest : GitHubReadMeRequest): Promise<GitHubReadMeResponse> => {
+  
+  const token = process.env.REACT_APP_GITHUB_TOKEN;
+  
+  if (!token) {
+    throw new Error('GitHub token not found. Please set REACT_APP_GITHUB_TOKEN in your .env file');
+  }
+  
   try {
-    const response = await fetch(`https://api.github.com/repos/${gitHubRepoReadMeRequest.username}/${gitHubRepoReadMeRequest.repoName}/readme`);
+    const response = await fetch(`https://api.github.com/repos/${gitHubRepoReadMeRequest.username}/${gitHubRepoReadMeRequest.repoName}/readme`, {
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: "application/vnd.github.v3+json",
+      },
+    });
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

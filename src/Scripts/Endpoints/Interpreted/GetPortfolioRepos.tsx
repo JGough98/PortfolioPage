@@ -1,4 +1,4 @@
-import getRepoProjects, { ProjectRepoRequest, ProjectRepoResponse } from "../Raw/GetRepoProjects";
+import getRepoProjects, { ProjectRepoResponse } from "../Raw/GetRepoProjects";
 import getRepoReadMe from "../Raw/GetRepoReadMe";
 import {GITHUB_TO_DEVICON, GitHubToDevicon, NO_GITHUB_MAPPING_FOUND } from "../../../Data/GithubToDevicon";
 import getRepoDeviconLanguages, { LanguageDTO } from "./GetRepoDeviconLanguages";
@@ -16,11 +16,11 @@ export interface ProjectRepoDTO {
 
 
 // Will attempt to fetch all the Portfolio data needed to render the repo UI.
-export const getPortfolioRepos = async (repoRequest: ProjectRepoRequest): Promise<ProjectRepoDTO[]> => {
+export const getPortfolioRepos = async (): Promise<ProjectRepoDTO[]> => {
     var repoProjects : ProjectRepoResponse;
     try
     {
-        repoProjects = await getRepoProjects(repoRequest);
+        repoProjects = await getRepoProjects();
     }
     catch (error)
     {
