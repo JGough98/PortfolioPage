@@ -10,7 +10,7 @@ export interface ProjectElementProps {
 
 export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpanded, onExpand }) => (
   <div 
-    className={`ProjectElement-${project.name}`}
+    className={`${ProjectModel.name}-${project.name}`}
     style={{ 
       border: '1px solid black', 
       margin: '8px', 
@@ -24,7 +24,7 @@ export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpande
       <h2 style={{ margin: 0 }}>{project.name}</h2>
       <div style={{ display: 'flex', gap: '4px' }}>
         {project.languages && project.languages.map((language, index) => (
-          <DeviconImg key={index} languageName={language.name} />
+          <DeviconImg key={index} languageName={language.deviconName} />
         ))}
       </div>
     </div>

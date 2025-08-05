@@ -1,3 +1,6 @@
+export const NO_GITHUB_MAPPING_FOUND = "NA";
+
+
 export const GITHUB_TO_DEVICON = {
     "Assembly": "assembly",
     "Bash": "bash",
@@ -51,3 +54,7 @@ export const GITHUB_TO_DEVICON = {
     "Vue": "vuejs",
     "YAML": "yaml",
   };
+
+export type GitHubToDevicon = {
+  [language: string]: string;
+};

@@ -1,7 +1,7 @@
-import getRepoLanguages, { LanguageDTO } from "../Raw/GetRepoLanguages";
 import getRepoProjects, { ProjectRepoRequest, ProjectRepoResponse } from "../Raw/GetRepoProjects";
 import getRepoReadMe from "../Raw/GetRepoReadMe";
-import { GITHUB_TO_DEVICON } from "../../UI/Devicon/GithubToDeviconConstants";
+import {GITHUB_TO_DEVICON, GitHubToDevicon, NO_GITHUB_MAPPING_FOUND } from "../../UI/Devicon/GithubToDeviconConstants";
+import getRepoDeviconLanguages, { LanguageDTO } from "./GetRepoDeviconLanguages";
 
 
 export interface ProjectRepoDTO {
@@ -29,6 +29,7 @@ export const getPortfolioRepos = async (repoRequest: ProjectRepoRequest): Promis
     }
 
     const repos: ProjectRepoDTO[] = new Array(repoProjects.GitHubRepo.length);
+    const githubToDevicon : GitHubToDevicon = GITHUB_TO_DEVICON;
 
     for (var i = 0; i < repoProjects.GitHubRepo.length; i++)
     {
@@ -51,23 +52,17 @@ export const getPortfolioRepos = async (repoRequest: ProjectRepoRequest): Promis
         var languages : LanguageDTO[];
         try
         {
-            // Add the languages used in the project.
-            const githubLanguages = await getRepoLanguages(nextRequest);
-            
-            const foundLanguages = githubLanguages.filter(lang => 
-                    Object.keys(GITHUB_TO_DEVICON).includes(lang.name))
-                .map((x) => ({
-                    name : GITHUB_TO_DEVICON[x.name as keyof typeof GITHUB_TO_DEVICON],
-                    byteCode : x.byteCode}));
+            const deviconLanguages = await getRepoDeviconLanguages(nextRequest, githubToDevicon);            
+            const foundLanguages = deviconLanguages.filter(lang => lang.deviconName !== NO_GITHUB_MAPPING_FOUND);
 
-            const notFoundLanguages = githubLanguages.filter(lang => 
-                !Object.keys(GITHUB_TO_DEVICON).includes(lang.name)
-            );
-
-            if(notFoundLanguages.length > 0)
-                console.warn(`Missing GitHub to Devicon languages: ${notFoundLanguages.map(lang => lang.name).join(', ')}`);
+            if(deviconLanguages.length != foundLanguages.length)
+            {
+                console.warn(`Missing GitHub to Devicon languages: ${deviconLanguages
+                    .filter(lang => lang.deviconName === NO_GITHUB_MAPPING_FOUND)
+                    .map(lang => lang.gitHubName)
+                    .join(', ')}`);
+            }
             
-            // Use only the found languages for now
             languages = foundLanguages;
         }
         catch (error)

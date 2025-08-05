@@ -4,17 +4,11 @@ export interface GitHubRepoLanguagesRequest
     repoName: string
 }
 
-export interface LanguageDTO
-{
-    name : string,
-    byteCode : number,
-}
-
-type LanguageResponse = {
-  [language: string]: number; // Language name as key, bytes as value
+export type LanguageResponse = {
+  [language: string]: number;
 };
 
-async function getRepoLanguages(repoLanguagesRequest : GitHubRepoLanguagesRequest): Promise<LanguageDTO[]> {
+async function getRepoLanguages(repoLanguagesRequest : GitHubRepoLanguagesRequest): Promise<LanguageResponse> {
   const url = `https://api.github.com/repos/${repoLanguagesRequest.username}/${repoLanguagesRequest.repoName}/languages`;
 
   const response = await fetch(url);
@@ -23,7 +17,8 @@ async function getRepoLanguages(repoLanguagesRequest : GitHubRepoLanguagesReques
   }
 
   const data: LanguageResponse = await response.json();
-  return Object.entries(data).map((x) => ({ name: x[0], byteCode: x[1] }));
+  
+  return data;
 }
 
 export default getRepoLanguages; 
