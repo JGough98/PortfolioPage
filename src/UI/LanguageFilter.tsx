@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DeviconImg from '../../Devicon/DeviconImg';
+import DeviconImg from './Devicon/DeviconImg';
 
 export interface FilterProps {
   languages: string[];
@@ -7,7 +7,7 @@ export interface FilterProps {
   selectedLanguages: Set<string>;
 }
 
-export const Filter: React.FC<FilterProps> = ({ languages, onLanguageToggle, selectedLanguages }) => {
+export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageToggle, selectedLanguages }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ export const Filter: React.FC<FilterProps> = ({ languages, onLanguageToggle, sel
         justifyContent: 'space-between',
         cursor: 'pointer'
       }}>
-        <h3 style={{ margin: 0 }}>Filter</h3>
+        <h3 style={{ margin: 0 }}>F</h3>
         <div style={{ display: 'flex', gap: '4px' }}>
           {languages.slice(0, 4).map((language, index) => (
             <DeviconImg 
@@ -79,4 +79,4 @@ export const Filter: React.FC<FilterProps> = ({ languages, onLanguageToggle, sel
   );
 };
 
-export default Filter; 
+export default LanguageFilter; 

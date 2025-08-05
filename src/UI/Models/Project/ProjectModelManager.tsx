@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import ProjectModel from './ProjectModel';
-import Filter from './Filter';
+import LanguageFilter from '../../LanguageFilter';
 import { ProjectRepoDTO } from '../../../Scripts/Endpoints/Interpreted/GetPortfolioRepos';
 
 export interface ProjectsProps {
@@ -68,7 +68,7 @@ const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
 
   return (
     <>
-      <Filter 
+      <LanguageFilter 
         languages={allLanguages}
         onLanguageToggle={handleLanguageToggle}
         selectedLanguages={selectedLanguages}
