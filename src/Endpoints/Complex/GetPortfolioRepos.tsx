@@ -1,7 +1,7 @@
 import getRepoLanguages, { LanguageDTO } from "../Raw/GetRepoLanguages";
 import getRepoProjects, { ProjectRepoRequest, ProjectRepoResponse } from "../Raw/GetRepoProjects";
 import getRepoReadMe from "../Raw/GetRepoReadMe";
-import { GITHUB_TO_DEVICON } from "../../Devicon/GithubToDeviconConstants";
+import { GITHUB_TO_DEVICON } from "../../UI/Devicon/GithubToDeviconConstants";
 
 
 export interface ProjectRepoDTO {

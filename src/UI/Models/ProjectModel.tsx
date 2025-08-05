@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProjectRepoDTO } from '../Endpoints/Complex/GetPortfolioRepos';
+import { ProjectRepoDTO } from '../../Endpoints/Complex/GetPortfolioRepos';
 import DeviconImg from '../Devicon/DeviconImg';
 
 export interface ProjectElementProps {
@@ -8,7 +8,7 @@ export interface ProjectElementProps {
   onExpand: () => void;
 }
 
-export const ProjectElement: React.FC<ProjectElementProps> = ({ project, isExpanded, onExpand }) => (
+export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpanded, onExpand }) => (
   <div 
     className={`ProjectElement-${project.name}`}
     style={{ 
@@ -50,4 +50,4 @@ export const ProjectElement: React.FC<ProjectElementProps> = ({ project, isExpan
   </div>
 );
 
-export default ProjectElement;
+export default ProjectModel;

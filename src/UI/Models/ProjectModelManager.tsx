@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import ProjectElement from './ProjectElement';
-import { ProjectRepoDTO } from '../Endpoints/Complex/GetPortfolioRepos';
+import ProjectModel from './ProjectModel';
+import { ProjectRepoDTO } from '../../Endpoints/Complex/GetPortfolioRepos';
 
 export interface ProjectsProps {
   projects: ProjectRepoDTO[];
 }
 
-const Projects: React.FC<ProjectsProps> = ({ projects }) => {
+const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const handleExpand = (index: number) => {
@@ -16,7 +16,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   return (
     <>
       {projects.map((project, i) => (
-        <ProjectElement
+        <ProjectModel
           key={i}
           project={project}
           isExpanded={expandedIndex === i}
@@ -27,4 +27,4 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   );
 };
 
-export default Projects;
+export default ProjectModelManager;
