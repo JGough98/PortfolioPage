@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Projects from './ProjectShowCase/Projects';
-import getPortfolioRepos from './Endpoints/Complex/GetPortfolioRepos';
-import { ProjectRepoRequest } from './Endpoints/Raw/GetRepoProjects';
+import ProjectModelManager from './UI/Models/Project/ProjectModelManager';
+import getPortfolioRepos from './Scripts/Endpoints/Interpreted/GetPortfolioRepos';
 
 
 const root = ReactDOM.createRoot(
@@ -14,16 +13,15 @@ const root = ReactDOM.createRoot(
 
 // Initialize with empty array, will be populated when data loads
 let projectsData: any[] = [];
-const pantryId: ProjectRepoRequest = { pantryId: "00000000-0000-0000-0000-000000000000" };
 
 // Fetch the portfolio repos
-getPortfolioRepos(pantryId)
+getPortfolioRepos()
   .then(repos => {
     projectsData = repos;
     // Re-render with the fetched data
     root.render(
       <React.StrictMode>
-        <Projects projects={projectsData}/>
+        <ProjectModelManager projects={projectsData}/>
         <App />
       </React.StrictMode>
     );
@@ -33,7 +31,7 @@ getPortfolioRepos(pantryId)
     // Render with empty projects on error
     root.render(
       <React.StrictMode>
-        <Projects projects={[]}/>
+        <ProjectModelManager projects={[]}/>
         <App />
       </React.StrictMode>
     );
@@ -42,7 +40,7 @@ getPortfolioRepos(pantryId)
 // Initial render with empty projects
 root.render(
   <React.StrictMode>
-    <Projects projects={projectsData}/>
+    <ProjectModelManager projects={projectsData}/>
     <App />
   </React.StrictMode>
 );
