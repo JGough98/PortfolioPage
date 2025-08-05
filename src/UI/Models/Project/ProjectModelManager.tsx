@@ -73,14 +73,30 @@ const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
         onLanguageToggle={handleLanguageToggle}
         selectedLanguages={selectedLanguages}
       />
-      {filteredProjects.map((project, i) => (
-        <ProjectModel
-          key={i}
-          project={project}
-          isExpanded={expanded[i]}
-          onExpand={() => handleExpand(i)}
-        />
-      ))}
+      {projects.map((project, i) => {
+        const isVisible = filteredProjects.some(fp => fp.name === project.name);
+        
+        return (
+          <div
+            key={i}
+            style={{
+              opacity: isVisible ? 1 : 0,
+              maxHeight: isVisible ? '1000px' : '0px',
+              overflow: 'hidden',
+              transition: isVisible 
+                ? 'opacity 0.4s ease-in-out, max-height 0.4s ease-in-out' 
+                : 'opacity 0.3s ease-in-out, max-height 0.3s ease-in-out',
+              marginBottom: isVisible ? '8px' : '0px'
+            }}
+          >
+            <ProjectModel
+              project={project}
+              isExpanded={expanded[i]}
+              onExpand={() => handleExpand(i)}
+            />
+          </div>
+        );
+      })}
     </>
   );
 };
