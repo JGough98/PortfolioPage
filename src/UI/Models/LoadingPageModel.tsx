@@ -7,7 +7,7 @@ interface LoadingPageProps {
   onDataLoaded: (data: ProjectRepoDTO[]) => void;
 }
 
-const LoadingPage: React.FC<LoadingPageProps> = ({ onDataLoaded, retryTime = 8 }) => {
+const LoadingPage: React.FC<LoadingPageProps> = ({ onDataLoaded, retryTime = 10 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
