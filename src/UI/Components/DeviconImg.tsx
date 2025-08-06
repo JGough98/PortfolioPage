@@ -13,7 +13,7 @@ export const DeviconImg: React.FC<DeviconImgProps> = ({ languageName, size = 'me
   };
 
   return (
-    <i 
+    <i
       className={`devicon-${languageName}-plain ${sizeClasses[size]} transition-all duration-200 hover:scale-110`}
       style={{
         display: 'inline-block',

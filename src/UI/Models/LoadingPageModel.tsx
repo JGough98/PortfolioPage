@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {getPortfolioRepos, ProjectRepoDTO} from "../../Scripts/Endpoints/Interpreted/GetPortfolioRepos";
+import { getPortfolioRepos, ProjectRepoDTO } from "../../Scripts/Endpoints/Interpreted/GetPortfolioRepos";
 import Button from "../Components/Button";
 
 interface LoadingPageProps {
-  retryTime? : number,
+  retryTime?: number,
   onDataLoaded: (data: ProjectRepoDTO[]) => void;
 }
 
@@ -146,7 +146,7 @@ const LoadingPage: React.FC<LoadingPageProps> = ({ onDataLoaded, retryTime = 8 }
               Attempt {retryCount + 1}
             </p>
           )}
-          <Button text="Retry" action = {handleRetry}></Button>
+          <Button text="Retry" action={handleRetry}></Button>
         </div>
       </div>
     );

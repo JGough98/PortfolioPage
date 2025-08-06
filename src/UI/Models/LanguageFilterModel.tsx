@@ -11,10 +11,10 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div 
-      style={{ 
-        margin: '8px', 
-        padding: '8px', 
+    <div
+      style={{
+        margin: '8px',
+        padding: '8px',
         borderRadius: '4px',
         position: 'relative',
         display: 'inline-block'
@@ -23,9 +23,9 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
       onMouseLeave={() => setIsExpanded(false)}
     >
       {/* Filter Label */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'space-between',
         cursor: 'pointer',
         whiteSpace: 'nowrap'
@@ -34,8 +34,8 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
       </div>
 
       {/* Expanded Language Options - Positioned to the right */}
-      <div 
-        style={{ 
+      <div
+        style={{
           position: 'absolute',
           left: '100%',
           top: '0',
@@ -43,8 +43,8 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
           maxWidth: isExpanded ? '300px' : '0px',
           overflow: 'hidden',
           opacity: isExpanded ? 1 : 0,
-          transition: isExpanded 
-            ? 'max-width 0.3s ease-in-out, opacity 0.3s ease-in-out' 
+          transition: isExpanded
+            ? 'max-width 0.3s ease-in-out, opacity 0.3s ease-in-out'
             : 'max-width 0.2s ease-in-out, opacity 0.2s ease-in-out',
           backgroundColor: 'white',
           padding: '8px',
@@ -65,8 +65,8 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
                 border: selectedLanguages.has(language) ? '1px solid #ccc' : '1px solid transparent'
               }}
             >
-              <DeviconImg 
-                languageName={language} 
+              <DeviconImg
+                languageName={language}
                 size="small"
               />
             </div>

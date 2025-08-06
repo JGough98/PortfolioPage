@@ -10,7 +10,7 @@ export interface ProjectsProps {
 const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
   // Track expanded state for each project
   const [expanded, setExpanded] = useState<boolean[]>(() => projects.map(() => false));
-  
+
   // Track selected languages for filtering (these will be hidden)
   const [selectedLanguages, setSelectedLanguages] = useState<Set<string>>(new Set());
 
@@ -30,17 +30,17 @@ const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
     if (selectedLanguages.size === 0) {
       return projects;
     }
-    
+
     return projects.filter(project => {
       // Only hide projects where ALL of their languages are faded/selected
       const projectLanguages = project.languages?.map(lang => lang.deviconName) || [];
       if (projectLanguages.length === 0) return true; // Show projects with no languages
-      
+
       // Check if ALL languages in this project are faded
-      const allLanguagesFaded = projectLanguages.every(lang => 
+      const allLanguagesFaded = projectLanguages.every(lang =>
         selectedLanguages.has(lang)
       );
-      
+
       // Show the project if NOT all languages are faded
       return !allLanguagesFaded;
     });
@@ -68,14 +68,14 @@ const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
 
   return (
     <>
-      <LanguageFilter 
+      <LanguageFilter
         languages={allLanguages}
         onLanguageToggle={handleLanguageToggle}
         selectedLanguages={selectedLanguages}
       />
       {projects.map((project, i) => {
         const isVisible = filteredProjects.some(fp => fp.name === project.name);
-        
+
         return (
           <div
             key={i}
@@ -83,8 +83,8 @@ const ProjectModelManager: React.FC<ProjectsProps> = ({ projects }) => {
               opacity: isVisible ? 1 : 0,
               maxHeight: isVisible ? '1000px' : '0px',
               overflow: 'hidden',
-              transition: isVisible 
-                ? 'opacity 0.4s ease-in-out, max-height 0.4s ease-in-out' 
+              transition: isVisible
+                ? 'opacity 0.4s ease-in-out, max-height 0.4s ease-in-out'
                 : 'opacity 0.3s ease-in-out, max-height 0.3s ease-in-out',
               marginBottom: isVisible ? '8px' : '0px'
             }}

@@ -8,7 +8,7 @@ async function getRepoLanguages(
   repoLanguagesRequest: GitHubRepoRequest
 ): Promise<LanguageResponse> {
   const token = process.env.REACT_APP_GITHUB_TOKEN;
-  
+
   if (!token) {
     throw new Error('GitHub token not found. Please set REACT_APP_GITHUB_TOKEN in your .env file');
   }

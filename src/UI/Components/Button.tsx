@@ -5,7 +5,7 @@ interface ButtonProps {
   action: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button: React.FC<ButtonProps> = ({text, action}) => {
+export const Button: React.FC<ButtonProps> = ({ text, action }) => {
   return (
     <button
       onClick={action}
@@ -26,8 +26,8 @@ export const Button: React.FC<ButtonProps> = ({text, action}) => {
         e.currentTarget.style.backgroundColor = "#3498db";
       }}
     >
-    {text}
-  </button>
+      {text}
+    </button>
   );
 };
 

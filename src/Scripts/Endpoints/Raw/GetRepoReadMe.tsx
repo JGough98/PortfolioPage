@@ -1,16 +1,13 @@
-export interface GitHubReadMeRequest
-{
-    username: string,
-    repoName: string
+export interface GitHubReadMeRequest {
+  username: string,
+  repoName: string
 }
 
-export interface GitHubReadMeDTO
-{
-    description : string;
+export interface GitHubReadMeDTO {
+  description: string;
 }
 
-interface GitHubReadMeResponse
-{
+interface GitHubReadMeResponse {
   name: string;
   path: string;
   sha: string;
@@ -30,14 +27,14 @@ interface GitHubReadMeResponse
 }
 
 
-const fetchRepoReadMe = async (gitHubRepoReadMeRequest : GitHubReadMeRequest): Promise<GitHubReadMeResponse> => {
-  
+const fetchRepoReadMe = async (gitHubRepoReadMeRequest: GitHubReadMeRequest): Promise<GitHubReadMeResponse> => {
+
   const token = process.env.REACT_APP_GITHUB_TOKEN;
-  
+
   if (!token) {
     throw new Error('GitHub token not found. Please set REACT_APP_GITHUB_TOKEN in your .env file');
   }
-  
+
   try {
     const response = await fetch(`https://api.github.com/repos/${gitHubRepoReadMeRequest.username}/${gitHubRepoReadMeRequest.repoName}/readme`, {
       headers: {
@@ -45,11 +42,11 @@ const fetchRepoReadMe = async (gitHubRepoReadMeRequest : GitHubReadMeRequest): P
         Accept: "application/vnd.github.v3+json",
       },
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+
     const data: GitHubReadMeResponse = await response.json();
     return data;
   } catch (error) {
@@ -60,8 +57,7 @@ const fetchRepoReadMe = async (gitHubRepoReadMeRequest : GitHubReadMeRequest): P
 
 // Helper function to decode base64 content
 export const decodeBase64 = (base64Content: string): string => {
-  try
-  {
+  try {
     return atob(base64Content);
   } catch (error) {
     console.error('Error decoding base64 content:', error);
@@ -69,14 +65,13 @@ export const decodeBase64 = (base64Content: string): string => {
   }
 };
 
-const getRepoReadMe = async (gitHubRepoReadMeRequest : GitHubReadMeRequest): Promise<GitHubReadMeDTO> => {
-    try
-    {
-        const repoReadMeFile = await fetchRepoReadMe(gitHubRepoReadMeRequest);
-        return { description : decodeBase64(repoReadMeFile.content) };
-    } catch (error) {
-      throw error;
-    }
-  };
+const getRepoReadMe = async (gitHubRepoReadMeRequest: GitHubReadMeRequest): Promise<GitHubReadMeDTO> => {
+  try {
+    const repoReadMeFile = await fetchRepoReadMe(gitHubRepoReadMeRequest);
+    return { description: decodeBase64(repoReadMeFile.content) };
+  } catch (error) {
+    throw error;
+  }
+};
 
 export default getRepoReadMe;
