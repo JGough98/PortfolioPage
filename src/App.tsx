@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import LoadingPage from "./UI/LoadingPageModel";
+import ProjectModelManager from "./UI/Models/Project/ProjectModelManager";
+import { ProjectRepoDTO } from "./Scripts/Endpoints/Interpreted/GetPortfolioRepos";
 
 function App() {
+  const [portfolioData, setPortfolioData] = useState<ProjectRepoDTO[] | null>(
+    null,
+  );
+
+  const handleDataLoaded = (data: ProjectRepoDTO[]) => {
+    setPortfolioData(data);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {portfolioData ? (
+        <div style={{ padding: "20px" }}>
+          <h1
+            style={{
+              textAlign: "center",
+              color: "#333",
+              marginBottom: "30px",
+              fontFamily: "Arial, sans-serif",
+            }}
+          >
+            My Portfolio
+          </h1>
+          <ProjectModelManager projects={portfolioData} />
+        </div>
+      ) : (
+        <LoadingPage onDataLoaded={handleDataLoaded} />
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import ProjectModel from './ProjectModel';
-import LanguageFilter from '../../LanguageFilter';
+import LanguageFilter from '../../LanguageFilterModel';
 import { ProjectRepoDTO } from '../../../Scripts/Endpoints/Interpreted/GetPortfolioRepos';
 
 export interface ProjectsProps {
