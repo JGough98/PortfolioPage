@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ProjectRepoDTO } from '../../../Scripts/Endpoints/Interpreted/GetPortfolioRepos';
-import DeviconImg from '../../Devicon/DeviconImg';
+import DeviconImg from '../../Components/DeviconImg';
 
 export interface ProjectElementProps {
   project: ProjectRepoDTO;

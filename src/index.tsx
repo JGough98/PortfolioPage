@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import getPortfolioRepos from './Scripts/Endpoints/Interpreted/GetPortfolioRepos';
-import LoadingPage from './UI/LoadingPageModel';
 
 
 const root = ReactDOM.createRoot(

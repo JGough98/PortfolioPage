@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DeviconImg from './Devicon/DeviconImg';
+import DeviconImg from '../Components/DeviconImg';
 
 export interface FilterProps {
   languages: string[];

@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import LoadingPage from "./UI/LoadingPageModel";
+import LoadingPage from "./UI/Models/LoadingPageModel";
 import ProjectModelManager from "./UI/Models/Project/ProjectModelManager";
 import { ProjectRepoDTO } from "./Scripts/Endpoints/Interpreted/GetPortfolioRepos";
 
