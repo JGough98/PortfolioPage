@@ -1,8 +1,6 @@
 import React from "react";
 import { SocialIconLink } from "../../Data/Constants/SocialIconLinks";
 
-
-
 interface SocialIconBarProps {
     links: SocialIconLink[];
 }
@@ -11,8 +9,8 @@ const SocialIconBar: React.FC<SocialIconBarProps> = ({ links }) => {
     return (
         <div style={{
             position: "fixed",
-            bottom: 0,
-            left: 13,
+            bottom: 20,
+            left: 63,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -35,7 +33,6 @@ const SocialIconBar: React.FC<SocialIconBarProps> = ({ links }) => {
                     />
                 </a>
             ))}
-            <div style={{ width: 2, height: 80, background: "#222", marginTop: 16 }} />
         </div>
     );
 };

@@ -5,8 +5,7 @@ import ProjectModelManager from "./UI/Models/Project/ProjectModelManager";
 import { ProjectRepoDTO } from "./Scripts/Endpoints/Interpreted/GetPortfolioRepos";
 import SocialIconBar from "./UI/Models/SocialIconBar";
 import socialLinks from "./Data/Constants/SocialIconLinks";
-import ProfileImg from "./UI/Components/ProfileImg";
-
+import ProfileSection from "./UI/Components/ProfileSection";
 
 function App() {
   const [portfolioData, setPortfolioData] = useState<ProjectRepoDTO[] | null>(
@@ -33,7 +32,7 @@ function App() {
             >
               My Portfolio
             </h1>
-            <ProfileImg url="https://github.com/JGough98.png" alt="ProfileImage" />
+            <ProfileSection profileUrl="https://github.com/JGough98.png" profileAlt="ProfileImage" />
             <ProjectModelManager projects={portfolioData} />
           </>
         ) : (
