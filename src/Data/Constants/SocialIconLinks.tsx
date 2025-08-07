@@ -14,7 +14,7 @@ const socialLinks: SocialIconLink[] = [
         alt: "GitHub"
     },
     {
-        href: "https://linkedin.com/in/yourprofile",
+        href: "https://linkedin.com/in/jwgough",
         imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
         alt: "LinkedIn"
     },
