@@ -1,4 +1,4 @@
-import { GitHubToDevicon, NO_GITHUB_MAPPING_FOUND } from "../../../Data/GithubToDevicon";
+import { GitHubToDevicon, NO_GITHUB_MAPPING_FOUND } from "../../../Data/Constants/GithubToDevicon";
 import GitHubRepoRequest from "../../../Data/Requests/GitHubRepoRequest";
 import getRepoLanguages from "../Raw/GetRepoLanguages";
 

@@ -4,7 +4,8 @@ import LoadingPage from "./UI/Models/LoadingPageModel";
 import ProjectModelManager from "./UI/Models/Project/ProjectModelManager";
 import { ProjectRepoDTO } from "./Scripts/Endpoints/Interpreted/GetPortfolioRepos";
 import SocialIconBar from "./UI/Models/SocialIconBar";
-import socialLinks from "./Data/SocialIconLinks";
+import socialLinks from "./Data/Constants/SocialIconLinks";
+import ProfileImg from "./UI/Components/ProfileImg";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           >
             My Portfolio
           </h1>
+          <ProfileImg url="https://github.com/JGough98.png" alt="ProfileImage" />
           <ProjectModelManager projects={portfolioData} />
           <SocialIconBar links={socialLinks} />
         </div>

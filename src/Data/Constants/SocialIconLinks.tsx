@@ -1,4 +1,4 @@
-import EmailIcon from '../Images/Email.png';
+import EmailIcon from '../../Images/Email.png';
 
 export type SocialIconLink = {
     href: string;

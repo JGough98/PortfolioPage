@@ -1,5 +1,5 @@
 import React from "react";
-import { SocialIconLink } from "../../Data/SocialIconLinks";
+import { SocialIconLink } from "../../Data/Constants/SocialIconLinks";
 
 
 
