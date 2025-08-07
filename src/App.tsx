@@ -3,6 +3,9 @@ import { useState } from "react";
 import LoadingPage from "./UI/Models/LoadingPageModel";
 import ProjectModelManager from "./UI/Models/Project/ProjectModelManager";
 import { ProjectRepoDTO } from "./Scripts/Endpoints/Interpreted/GetPortfolioRepos";
+import SocialIconBar from "./UI/Models/SocialIconBar";
+import socialLinks from "./Data/SocialIconLinks";
+
 
 function App() {
   const [portfolioData, setPortfolioData] = useState<ProjectRepoDTO[] | null>(
@@ -28,6 +31,7 @@ function App() {
             My Portfolio
           </h1>
           <ProjectModelManager projects={portfolioData} />
+          <SocialIconBar links={socialLinks} />
         </div>
       ) : (
         <LoadingPage onDataLoaded={handleDataLoaded} />
