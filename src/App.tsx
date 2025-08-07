@@ -19,25 +19,27 @@ function App() {
 
   return (
     <div className="App">
-      {portfolioData ? (
-        <div style={{ padding: "20px" }}>
-          <h1
-            style={{
-              textAlign: "center",
-              color: "#333",
-              marginBottom: "30px",
-              fontFamily: "Arial, sans-serif",
-            }}
-          >
-            My Portfolio
-          </h1>
-          <ProfileImg url="https://github.com/JGough98.png" alt="ProfileImage" />
-          <ProjectModelManager projects={portfolioData} />
-          <SocialIconBar links={socialLinks} />
-        </div>
-      ) : (
-        <LoadingPage onDataLoaded={handleDataLoaded} />
-      )}
+      <SocialIconBar links={socialLinks} />
+      <div className="centered-content">
+        {portfolioData ? (
+          <>
+            <h1
+              style={{
+                textAlign: "center",
+                color: "#333",
+                marginBottom: "30px",
+                fontFamily: "Arial, sans-serif",
+              }}
+            >
+              My Portfolio
+            </h1>
+            <ProfileImg url="https://github.com/JGough98.png" alt="ProfileImage" />
+            <ProjectModelManager projects={portfolioData} />
+          </>
+        ) : (
+          <LoadingPage onDataLoaded={handleDataLoaded} />
+        )}
+      </div>
     </div>
   );
 }
