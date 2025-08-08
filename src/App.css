@@ -60,10 +60,7 @@
 }
 
 .page-marker.active {
-  background: #555;
-  color: #fff;
   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
-  border-color: #333;
 }
 
 .page-marker.active::after {
@@ -73,7 +70,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #333;
+  background: inherit;
 }
 
 /* Notebook Container */
@@ -139,9 +136,10 @@
 .skills-section {
   margin-top: 30px;
   padding: 20px;
-  background: #f9f9f9;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   border-left: 4px solid #333;
+  color: #333;
 }
 
 .skills-section h3 {
@@ -160,6 +158,7 @@
   border-bottom: 1px solid #e0e0e0;
   position: relative;
   padding-left: 20px;
+  color: #333;
 }
 
 .skills-section li::before {
@@ -180,10 +179,11 @@
 
 .contact-item {
   padding: 20px;
-  background: #f9f9f9;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   text-align: center;
+  color: #333;
 }
 
 .contact-item h3 {

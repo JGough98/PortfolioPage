@@ -9,6 +9,26 @@ import ProfileSection from "./UI/Components/ProfileSection";
 
 type PageType = 'about' | 'projects' | 'contact';
 
+interface PageConfig {
+  color: string;
+  backgroundColor: string;
+}
+
+const pageConfigs: Record<PageType, PageConfig> = {
+  about: {
+    color: '#fff',
+    backgroundColor: '#ffd9b5' // Yellow
+  },
+  projects: {
+    color: '#fff',
+    backgroundColor: '#d4ecf0' // Blue
+  },
+  contact: {
+    color: '#fff',
+    backgroundColor: '#d8e9bd' // Green
+  }
+};
+
 function App() {
   const [portfolioData, setPortfolioData] = useState<ProjectRepoDTO[] | null>(
     null,
@@ -20,10 +40,12 @@ function App() {
   };
 
   const renderPageContent = () => {
+    const currentConfig = pageConfigs[currentPage];
+
     switch (currentPage) {
       case 'about':
         return (
-          <div className="notebook-page">
+          <div className="notebook-page" style={{ backgroundColor: currentConfig.backgroundColor, color: currentConfig.color }}>
             <h2>About Me</h2>
             <div className="notebook-content">
               <p>
@@ -51,7 +73,7 @@ function App() {
 
       case 'projects':
         return (
-          <div className="notebook-page">
+          <div className="notebook-page" style={{ backgroundColor: currentConfig.backgroundColor, color: currentConfig.color }}>
             <h2>Projects</h2>
             <div className="notebook-content">
               {portfolioData ? (
@@ -65,7 +87,7 @@ function App() {
 
       case 'contact':
         return (
-          <div className="notebook-page">
+          <div className="notebook-page" style={{ backgroundColor: currentConfig.backgroundColor, color: currentConfig.color }}>
             <h2>Contact Me</h2>
             <div className="notebook-content">
               <p>
@@ -105,18 +127,33 @@ function App() {
         <button
           className={`page-marker ${currentPage === 'about' ? 'active' : ''}`}
           onClick={() => setCurrentPage('about')}
+          style={{
+            backgroundColor: currentPage === 'about' ? pageConfigs.about.backgroundColor : '#fff',
+            color: currentPage === 'about' ? pageConfigs.about.color : '#333',
+            borderColor: currentPage === 'about' ? pageConfigs.about.backgroundColor : '#333'
+          }}
         >
           About Me
         </button>
         <button
           className={`page-marker ${currentPage === 'projects' ? 'active' : ''}`}
           onClick={() => setCurrentPage('projects')}
+          style={{
+            backgroundColor: currentPage === 'projects' ? pageConfigs.projects.backgroundColor : '#fff',
+            color: currentPage === 'projects' ? pageConfigs.projects.color : '#333',
+            borderColor: currentPage === 'projects' ? pageConfigs.projects.backgroundColor : '#333'
+          }}
         >
           Projects
         </button>
         <button
           className={`page-marker ${currentPage === 'contact' ? 'active' : ''}`}
           onClick={() => setCurrentPage('contact')}
+          style={{
+            backgroundColor: currentPage === 'contact' ? pageConfigs.contact.backgroundColor : '#fff',
+            color: currentPage === 'contact' ? pageConfigs.contact.color : '#333',
+            borderColor: currentPage === 'contact' ? pageConfigs.contact.backgroundColor : '#333'
+          }}
         >
           Contact Me
         </button>
