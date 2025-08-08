@@ -26,12 +26,12 @@
 
 /* Page Markers */
 .page-markers {
-  position: fixed;
-  top: 20px;
+  position: absolute;
+  top: -40px;
   right: 20px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0px;
   z-index: 1001;
   background: transparent;
 }
@@ -40,29 +40,30 @@
   background: #fff;
   border: 2px solid #333;
   border-radius: 8px 8px 0 0;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-family: 'Georgia', serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: #333;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.15);
   position: relative;
-  min-width: 100px;
+  min-width: 120px;
   text-align: center;
 }
 
 .page-marker:hover {
   background: #f0f0f0;
-  transform: translateY(-2px);
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .page-marker.active {
-  background: #333;
+  background: #555;
   color: #fff;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+  border-color: #333;
 }
 
 .page-marker.active::after {
@@ -86,7 +87,7 @@
   border-radius: 0 8px 8px 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Notebook Page */
@@ -208,14 +209,15 @@
   }
 
   .page-markers {
-    right: 10px;
-    gap: 8px;
+    right: 0;
+    gap: 0px;
+    top: -35px;
   }
 
   .page-marker {
-    padding: 8px 15px;
-    font-size: 12px;
-    min-width: 80px;
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 100px;
   }
 
   .notebook-page {
