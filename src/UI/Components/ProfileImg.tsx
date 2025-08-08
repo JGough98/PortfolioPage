@@ -18,8 +18,8 @@ const ProfileImg: React.FC<ProfileImgProps> = ({ url, alt = "", size = 128 }) =>
         objectFit: "cover",
         display: "block",
         position: "fixed",
-        top: 12,
-        left: 12,
+        top: 6,
+        left: 6,
         zIndex: 2000
       }}
     />

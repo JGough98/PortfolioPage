@@ -10,7 +10,7 @@ const SocialIconBar: React.FC<SocialIconBarProps> = ({ links }) => {
         <div style={{
             position: "fixed",
             bottom: 20,
-            left: 63,
+            left: 53,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

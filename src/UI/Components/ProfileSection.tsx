@@ -9,7 +9,7 @@ interface ProfileSectionProps {
 const ProfileSection: React.FC<ProfileSectionProps> = ({
     profileUrl,
     profileAlt = "ProfileImage",
-    size = 128
+    size = 115
 }) => {
     return (
         <div style={{
@@ -24,8 +24,8 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({
             {/* Profile Picture Container */}
             <div style={{
                 position: "absolute",
-                top: 20,
-                left: 20,
+                top: 15,
+                left: 15,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -57,7 +57,7 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({
                 {/* Connecting Line */}
                 <div style={{
                     width: "4px",
-                    height: "calc(100vh - 380px)", // Dynamic height to reach near social icons
+                    height: "calc(100vh - 370px)", // Dynamic height to reach near social icons
                     background: "#000",
                     position: "relative",
                     borderRadius: "2px", // Slightly rounded edges for hand-drawn look
