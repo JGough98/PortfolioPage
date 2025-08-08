@@ -29,7 +29,8 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                pointerEvents: "none"
+                pointerEvents: "none",
+                zIndex: 1501
             }}>
                 {/* Profile Picture with Hand-drawn Border */}
                 <div style={{
@@ -39,6 +40,8 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({
                     borderRadius: "50%",
                     border: "3px solid #000",
                     boxShadow: "0 0 0 2px #000", // Additional border effect for hand-drawn look
+                    background: "#fff",
+                    zIndex: 1502
                 }}>
                     <img
                         src={profileUrl}
@@ -61,6 +64,7 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({
                     background: "#000",
                     position: "relative",
                     borderRadius: "2px", // Slightly rounded edges for hand-drawn look
+                    zIndex: 1501
                 }} />
             </div>
         </div>

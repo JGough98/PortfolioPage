@@ -13,11 +13,14 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
   return (
     <div
       style={{
-        margin: '8px',
-        padding: '8px',
-        borderRadius: '4px',
+        margin: '8px 0',
+        padding: '12px',
+        borderRadius: '8px',
         position: 'relative',
-        display: 'inline-block'
+        display: 'inline-block',
+        background: '#f9f9f9',
+        border: '1px solid #e0e0e0',
+        borderLeft: '4px solid #333'
       }}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
@@ -30,7 +33,12 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
         cursor: 'pointer',
         whiteSpace: 'nowrap'
       }}>
-        <h3 style={{ margin: 0 }}>All Languages</h3>
+        <h3 style={{
+          margin: 0,
+          fontSize: '16px',
+          color: '#333',
+          fontFamily: 'Georgia, serif'
+        }}>All Languages</h3>
       </div>
 
       {/* Expanded Language Options - Positioned to the right */}
@@ -47,7 +55,10 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
             ? 'max-width 0.3s ease-in-out, opacity 0.3s ease-in-out'
             : 'max-width 0.2s ease-in-out, opacity 0.2s ease-in-out',
           backgroundColor: 'white',
-          padding: '8px',
+          padding: '12px',
+          borderRadius: '8px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          border: '1px solid #e0e0e0',
           zIndex: 1000
         }}
       >
@@ -60,9 +71,10 @@ export const LanguageFilter: React.FC<FilterProps> = ({ languages, onLanguageTog
                 cursor: 'pointer',
                 opacity: selectedLanguages.has(language) ? 0.3 : 1,
                 transition: 'opacity 0.2s ease-in-out',
-                padding: '4px',
-                borderRadius: '4px',
-                border: selectedLanguages.has(language) ? '1px solid #ccc' : '1px solid transparent'
+                padding: '6px',
+                borderRadius: '6px',
+                border: selectedLanguages.has(language) ? '1px solid #ccc' : '1px solid transparent',
+                background: selectedLanguages.has(language) ? '#f0f0f0' : 'transparent'
               }}
             >
               <DeviconImg

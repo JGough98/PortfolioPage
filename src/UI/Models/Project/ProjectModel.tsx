@@ -15,10 +15,14 @@ export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpande
     <div
       className={`${ProjectModel.name}-${project.name}`}
       style={{
-        border: '1px solid black',
-        margin: '8px',
-        padding: '8px',
-        borderRadius: '4px'
+        border: '1px solid #e0e0e0',
+        margin: '12px 0',
+        padding: '16px',
+        borderRadius: '8px',
+        background: '#fff',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        transition: 'all 0.3s ease-in-out',
+        borderLeft: '4px solid #333'
       }}
     >
 
@@ -37,15 +41,18 @@ export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpande
           onMouseLeave={() => setIsHovered(false)}
           style={{
             margin: 0,
-            transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+            transform: isHovered ? 'scale(1.02)' : 'scale(1)',
             transition: 'transform 0.2s ease-in-out',
             cursor: 'pointer',
+            color: '#333',
+            fontFamily: 'Georgia, serif',
+            fontSize: '20px'
           }}>
           {project.name}
         </h2>
         <div style={{
           display: 'flex',
-          gap: '4px',
+          gap: '6px',
           transform: isHovered ? 'scale(1.05)' : 'scale(1)',
           transition: 'transform 0.2s ease-in-out'
         }}>
@@ -58,7 +65,7 @@ export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpande
       {/* Expanded State - Only Visible When Expanded */}
       <div
         style={{
-          marginTop: '12px',
+          marginTop: '16px',
           maxHeight: isExpanded ? '1000px' : '0px',
           overflow: 'hidden',
           opacity: isExpanded ? 1 : 0,
@@ -67,16 +74,60 @@ export const ProjectModel: React.FC<ProjectElementProps> = ({ project, isExpande
             : 'max-height 0.2s ease-in-out, opacity 0.2s ease-in-out'
         }}
       >
-        <p>{project.description}</p>
+        <p style={{
+          color: '#444',
+          lineHeight: '1.6',
+          marginBottom: '16px',
+          fontFamily: 'Georgia, serif'
+        }}>{project.description}</p>
         {project.images && project.images.length > 0 && (
-          <img src={project.images[0]} alt={project.name} style={{ maxWidth: '100%', height: 'auto' }} />
+          <div style={{ marginBottom: '16px' }}>
+            <img
+              src={project.images[0]}
+              alt={project.name}
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+                borderRadius: '6px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+              }}
+            />
+          </div>
         )}
-        <div style={{ marginTop: '8px' }}>
-          <a href={project.url} target="_blank" rel="noopener noreferrer">Learn more</a>
+        <div style={{
+          marginTop: '12px',
+          padding: '12px',
+          background: '#f9f9f9',
+          borderRadius: '6px',
+          border: '1px solid #e0e0e0'
+        }}>
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: '#333',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              marginRight: '12px'
+            }}
+          >
+            Learn more
+          </a>
           {project.docURL && (
             <>
-              {' | '}
-              <a href={project.docURL} target="_blank" rel="noopener noreferrer">Documentation</a>
+              <a
+                href={project.docURL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: '#333',
+                  textDecoration: 'none',
+                  fontWeight: 'bold'
+                }}
+              >
+                Documentation
+              </a>
             </>
           )}
         </div>
